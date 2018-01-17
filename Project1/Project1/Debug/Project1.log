@@ -1,0 +1,7 @@
+﻿  MyForm.cpp
+c:\users\dima\source\repos\project1\project1\MyForm.h(375): warning C4101: 'result': unreferenced local variable
+c:\users\dima\source\repos\project1\project1\MyForm.h(384): warning C4101: 'result': unreferenced local variable
+c:\users\dima\source\repos\project1\project1\MyForm.h(393): warning C4101: 'result': unreferenced local variable
+c:\users\dima\source\repos\project1\project1\MyForm.h(437): warning C4101: 'result': unreferenced local variable
+c:\users\dima\source\repos\project1\project1\MyForm.h(412): warning C4101: 'result': unreferenced local variable
+  Project1.vcxproj -> C:\Users\dima\source\repos\Project1\Debug\Project1.exe
