@@ -428,16 +428,17 @@ namespace Project1 {
 				this->serialPort1->Write(NTPServerAdress);	//5
 				this->serialPort1->Write("#");
 				this->progressBar1->Increment(50);
+				//close port
+				this->serialPort1->Close();
+				String^ message = "All data sent! Thank you!";
+				String^ caption = "Success";
+				MessageBoxButtons buttons = MessageBoxButtons::OK;
+				System::Windows::Forms::DialogResult result;
+				MessageBox::Show(this, message, caption, buttons);
+				this->progressBar1->Value = 0;
+				this->button2->Enabled = true;
 			}
-			//close port
-			this->serialPort1->Close();
-			String^ message = "All data sent! Thank you!";
-			String^ caption = "Success";
-			MessageBoxButtons buttons = MessageBoxButtons::OK;
-			System::Windows::Forms::DialogResult result;
-			MessageBox::Show(this, message, caption, buttons);
-			this->progressBar1->Value = 0;
-			this->button2->Enabled = true;
+
 		}
 
 
