@@ -407,7 +407,9 @@ void timestuct(){
     }
   }
 }
+
 /*-------- Print Digits ----------*/
+
 void printDigits()
 {
   Serial.print(hour());
@@ -566,11 +568,11 @@ void readEEPROM(){
   Serial.println();
   gtmtime = EEPROM.read(65);
   Serial.println(gtmtime);
-  if(gtmtime <= 14){
+  if(gtmtime <= 15){
     timeZone = gtmtime;
      Serial.println(timeZone);
   }else{   
-    timeZone = gtmtime - 14;
+    timeZone = gtmtime - 15;
     timeZone = timeZone * -1;
     Serial.println(timeZone);
   }
@@ -617,6 +619,7 @@ void syncronization(){
 }
 
 /*-------- Loop all functions ----------*/
+
 
 void loop() {
   parsing();

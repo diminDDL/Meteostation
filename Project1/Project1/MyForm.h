@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <string>
 #include <iostream>  
 #include <windows.h>
@@ -214,17 +214,21 @@ namespace Project1 {
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
 			this->label7->Location = System::Drawing::Point(128, 209);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(43, 17);
+			this->label7->Size = System::Drawing::Size(40, 17);
 			this->label7->TabIndex = 12;
-			this->label7->Text = L"GMT:";
+			this->label7->Text = L"UTC:";
+			this->label7->Click += gcnew System::EventHandler(this, &MyForm::label7_Click);
 			// 
 			// comboBox2
 			// 
 			this->comboBox2->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox2->FormattingEnabled = true;
-			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(12) {
-				L"GMT+1", L"GMT+2", L"GMT+3", L"GMT+4", L"GMT+5",
-					L"GMT+6", L"GMT+7", L"GMT+8", L"GMT+9", L"GMT+10", L"GMT+11", L"GMT+12"
+			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(28) {
+				L"UTC±00:00, ", L"UTC+01:00, ", L"UTC+02:00, ",
+					L"UTC+03:00, ", L"UTC+04:00, ", L"UTC+05:00, ", L"UTC+06:00, ", L"UTC+07:00, ", L"UTC+08:00, ", L"UTC+09:00, ", L"UTC+10:00, ",
+					L"UTC+10:30, ", L"UTC+11:00, ", L"UTC+12:00, ", L"UTC+13:00, ", L"UTC+14:00, ", L"UTC−01:00, ", L"UTC−02:00, ", L"UTC−03:00, ",
+					L"UTC−04:00, ", L"UTC−05:00, ", L"UTC−06:00, ", L"UTC−07:00, ", L"UTC−08:00, ", L"UTC−09:00, ", L"UTC−10:00, ", L"UTC−11:00, ",
+					L"UTC−12:00"
 			});
 			this->comboBox2->Location = System::Drawing::Point(184, 209);
 			this->comboBox2->Name = L"comboBox2";
@@ -414,9 +418,10 @@ namespace Project1 {
 				this->progressBar1->Value = 0;
 				this->button2->Enabled = true;
 			}
-			this->progressBar1->Increment(45);
-			Sleep(800);
+			
 			if (this->serialPort1->IsOpen) {
+				this->progressBar1->Increment(45);
+				Sleep(800);
 				this->serialPort1->Write(WifiSSID);	//1
 				this->serialPort1->Write(";");
 				this->serialPort1->Write(WifiPASSWORD);	//2
@@ -443,5 +448,7 @@ namespace Project1 {
 
 
 	}
-	};
+	private: System::Void label7_Click(System::Object^  sender, System::EventArgs^  e) {
+	}
+};
 }

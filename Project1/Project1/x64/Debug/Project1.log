@@ -1,7 +1,7 @@
 ﻿  MyForm.cpp
-d:\download\metostation\project1\project1\MyForm.h(375): warning C4101: 'result': unreferenced local variable
-d:\download\metostation\project1\project1\MyForm.h(384): warning C4101: 'result': unreferenced local variable
-d:\download\metostation\project1\project1\MyForm.h(393): warning C4101: 'result': unreferenced local variable
-d:\download\metostation\project1\project1\MyForm.h(412): warning C4101: 'result': unreferenced local variable
-d:\download\metostation\project1\project1\MyForm.h(436): warning C4101: 'result': unreferenced local variable
+d:\download\metostation\project1\project1\MyForm.h(379): warning C4101: 'result': unreferenced local variable
+d:\download\metostation\project1\project1\MyForm.h(388): warning C4101: 'result': unreferenced local variable
+d:\download\metostation\project1\project1\MyForm.h(397): warning C4101: 'result': unreferenced local variable
+d:\download\metostation\project1\project1\MyForm.h(416): warning C4101: 'result': unreferenced local variable
+d:\download\metostation\project1\project1\MyForm.h(441): warning C4101: 'result': unreferenced local variable
   Project1.vcxproj -> D:\download\Metostation\Project1\x64\Debug\Project1.exe
