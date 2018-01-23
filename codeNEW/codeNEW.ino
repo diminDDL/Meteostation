@@ -52,8 +52,6 @@ boolean negative = false;
 boolean dot;
 boolean blinker = true;
 int dayofweek;
-int newmin = t.min;
-int newhour = t.hour;
 int minutes = t.min;
 int hours = t.hour;
 int seconds = t.sec;
@@ -62,7 +60,6 @@ unsigned long inpu = 0;
 int output = 0;
 int number = 0;
 int timeZone = 2;
-unsigned long blinker_millis;
 
 /*-------- NTP setup ----------*/
 
@@ -234,14 +231,10 @@ unsigned long floatmulplier(float input = 0){
 /*-------- Maesurments ----------*/
 
 void masurement(){
-  if(millis() - last_millis >= 2000){
+  if(millis() - last_millis >= 2500){
     last_millis = millis();
     h = dht.readHumidity();
     temp = dht.readTemperature();    
-  }
-  if(millis() - blinker_millis >= 1000){
-    blinker_millis = millis();
-    blinker = !blinker;  
   }
   
   if(barometer.IsConnected){
@@ -278,8 +271,7 @@ void writer(){
   lc.setDigit(0,6,numbdis(floatmulplier(h),0),!dot);
     
   //#2 dislpay
-  
-  delay(10);
+ 
   if(pt < 1 && pt > -1){
     lc.setDigit(1,0,0,false); 
     lc.setDigit(1,1,numbdis(floatmulplier(pt),0),dot);
@@ -335,6 +327,9 @@ void writer(){
     lc.setDigit(2,4,hours,blinker); 
     lc.setDigit(2,5,0,false);  
   }
+  
+ 
+  
 }  
 
 /*-------- Syncronization ----------*/
@@ -376,16 +371,17 @@ void online(){
 /*-------- Time ----------*/
 void timestuct(){
 
+  
   t = rtc.getTime();
-  newmin = t.min;
-  newhour = t.hour;
   minutes = t.min;
   hours = t.hour;
-  seconds = t.sec;
+  seconds = t.sec;      
   value = analogRead(0);
   if (timeStatus() != timeNotSet) {
     if (now() != prevDisplay) { //update the display only if time has changed
       prevDisplay = now();
+      writer();
+      blinker = !blinker; 
       t = rtc.getTime();
       switch(syncinterval){
         case 0:
@@ -625,8 +621,12 @@ void loop() {
   parsing();
   timestuct();
   masurement();
-  writer();
   online();
+  
+  /*-------- Anti Overflow ----------*/
+  if((unsigned long)millis() < (unsigned long)last_millis){
+    ESP.reset();
+  }
 }
 
 
