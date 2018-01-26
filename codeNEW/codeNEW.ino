@@ -76,8 +76,8 @@ LedControl lc = LedControl(0,2,15,3);
 
 /*-------- Set up thingspaek ----------*/
 
-unsigned long myChannelNumber = 361732;
-const char * myWriteAPIKey = "OJZ4CBIFT9M5959B";
+unsigned long myChannelNumber = YourNumber;
+const char * myWriteAPIKey = "YourAPIKey";
 int status = WL_IDLE_STATUS;
 WiFiClient  client;
 
