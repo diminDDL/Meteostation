@@ -101,8 +101,8 @@ void sendNTPpacket(IPAddress &address);
  */
 LedControl lc = LedControl(0,2,15,3);
 
-unsigned long myChannelNumber = 361732;
-const char * myWriteAPIKey = "OJZ4CBIFT9M5959B";
+unsigned long myChannelNumber = CHNumber;
+const char * myWriteAPIKey = "API";
 
 void setup() {  
   Serial.begin(9600);
