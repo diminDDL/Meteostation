@@ -55,7 +55,6 @@ int dayofweek;
 int minutes = t.min;
 int hours = t.hour;
 int seconds = t.sec;
-int value;
 unsigned long inpu = 0;
 int output = 0;
 int number = 0;
@@ -92,7 +91,7 @@ void setup() {
   dht.begin(); 
   rtc.halt(false);
   Wire.begin();
-
+  pinMode(16, OUTPUT);
   /*-------- Read the EEPROM data ----------*/
   
   delay(10);
@@ -150,9 +149,11 @@ void setup() {
   if(WiFi.status() == WL_CONNECTED){
     Serial.println("");
     Serial.println("WiFi connected"); 
+    digitalWrite(16, HIGH);
   }else if(WiFi.status() != WL_CONNECTED){
     Serial.println("");
     Serial.println("WiFi NOT connected, conection timeout!"); 
+    digitalWrite(16, LOW);
   }
 
   /*-------- Start NTP ----------*/
@@ -251,53 +252,53 @@ void writer(){
   //#1 disolay
   
   if(temp < 1 && temp > -1){
-    lc.setDigit(0,0,0,false); 
-    lc.setDigit(0,1,numbdis(floatmulplier(temp),0),dot);
-    lc.setDigit(0,2,0,!dot);     
+    lc.setDigit(0,4,0,false); 
+    lc.setDigit(0,5,numbdis(floatmulplier(temp),0),dot);
+    lc.setDigit(0,6,0,!dot);     
   }else{
-    lc.setDigit(0,0,numbdis(floatmulplier(temp),2),false); 
-    lc.setDigit(0,1,numbdis(floatmulplier(temp),1),dot);
-    lc.setDigit(0,2,numbdis(floatmulplier(temp),0),!dot);
+    lc.setDigit(0,4,numbdis(floatmulplier(temp),2),false); 
+    lc.setDigit(0,5,numbdis(floatmulplier(temp),1),dot);
+    lc.setDigit(0,6,numbdis(floatmulplier(temp),0),!dot);
   }
   
   if(negative){
-    lc.setChar(0,3,'-',false);  
+    lc.setChar(0,7,'-',false);  
   }else{
-    lc.setChar(0,3,' ',false);
+    lc.setChar(0,7,' ',false);
   }
   
-  lc.setDigit(0,4,numbdis(floatmulplier(h),2),false);
-  lc.setDigit(0,5,numbdis(floatmulplier(h),1),dot);
-  lc.setDigit(0,6,numbdis(floatmulplier(h),0),!dot);
+  lc.setDigit(0,0,numbdis(floatmulplier(h),2),false);
+  lc.setDigit(0,1,numbdis(floatmulplier(h),1),dot);
+  lc.setDigit(0,2,numbdis(floatmulplier(h),0),!dot);
     
   //#2 dislpay
  
   if(pt < 1 && pt > -1){
-    lc.setDigit(1,0,0,false); 
-    lc.setDigit(1,1,numbdis(floatmulplier(pt),0),dot);
-    lc.setDigit(1,2,0,!dot);     
+    lc.setDigit(1,4,0,false); 
+    lc.setDigit(1,5,numbdis(floatmulplier(pt),0),dot);
+    lc.setDigit(1,6,0,!dot);     
   }else{
-    lc.setDigit(1,0,numbdis(floatmulplier(pt),2),false); 
-    lc.setDigit(1,1,numbdis(floatmulplier(pt),1),dot);
-    lc.setDigit(1,2,numbdis(floatmulplier(pt),0),!dot);
+    lc.setDigit(1,4,numbdis(floatmulplier(pt),2),false); 
+    lc.setDigit(1,5,numbdis(floatmulplier(pt),1),dot);
+    lc.setDigit(1,6,numbdis(floatmulplier(pt),0),!dot);
   }
   
   if(negative){
-    lc.setChar(1,3,'-',false);  
+    lc.setChar(1,7,'-',false);  
   }else{
-    lc.setChar(1,3,' ',false);
+    lc.setChar(1,7,' ',false);
   }
   
   if(p < 1000){
-    lc.setDigit(1,4,numbdis(floatmulplier(p),3),false); 
-    lc.setDigit(1,5,numbdis(floatmulplier(p),2),true);
-    lc.setDigit(1,6,numbdis(floatmulplier(p),1),false);
-    lc.setDigit(1,7,numbdis(floatmulplier(p),0),false);
+    lc.setDigit(1,0,numbdis(floatmulplier(p),3),false); 
+    lc.setDigit(1,1,numbdis(floatmulplier(p),2),true);
+    lc.setDigit(1,2,numbdis(floatmulplier(p),1),false);
+    lc.setDigit(1,3,numbdis(floatmulplier(p),0),false);
   }else{
-    lc.setDigit(1,4,numbdis(floatmulplier(p),3),false); 
-    lc.setDigit(1,5,numbdis(floatmulplier(p),2),false);
-    lc.setDigit(1,6,numbdis(floatmulplier(p),1),false);
-    lc.setDigit(1,7,numbdis(floatmulplier(p),0),false);
+    lc.setDigit(1,0,numbdis(floatmulplier(p),3),false); 
+    lc.setDigit(1,1,numbdis(floatmulplier(p),2),false);
+    lc.setDigit(1,2,numbdis(floatmulplier(p),1),false);
+    lc.setDigit(1,3,numbdis(floatmulplier(p),0),false);
   }
   
   //#3 display
@@ -376,7 +377,6 @@ void timestuct(){
   minutes = t.min;
   hours = t.hour;
   seconds = t.sec;      
-  value = analogRead(0);
   if (timeStatus() != timeNotSet) {
     if (now() != prevDisplay) { //update the display only if time has changed
       prevDisplay = now();
