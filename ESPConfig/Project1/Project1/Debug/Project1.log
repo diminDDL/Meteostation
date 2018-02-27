@@ -1,0 +1,10 @@
+﻿  MyForm.cpp
+d:\espconfig\project1\project1\MyForm.h(5): warning C4005: '_WIN32_WINNT': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.16299.0\shared\sdkddkver.h(215): note: see previous definition of '_WIN32_WINNT'
+d:\espconfig\project1\project1\MyForm.h(379): warning C4101: 'result': unreferenced local variable
+d:\espconfig\project1\project1\MyForm.h(388): warning C4101: 'result': unreferenced local variable
+d:\espconfig\project1\project1\MyForm.h(397): warning C4101: 'result': unreferenced local variable
+d:\espconfig\project1\project1\MyForm.h(416): warning C4101: 'result': unreferenced local variable
+d:\espconfig\project1\project1\MyForm.h(441): warning C4101: 'result': unreferenced local variable
+  .NETFramework,Version=v4.0.AssemblyAttributes.cpp
+  Project1.vcxproj -> D:\ESPConfig\Project1\Debug\Project1.exe

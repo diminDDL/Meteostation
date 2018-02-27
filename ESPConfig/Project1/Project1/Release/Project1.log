@@ -1,0 +1,6 @@
+﻿D:\Program Files\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(387,5): warning MSB8028: The intermediate directory (Release\) contains files shared from another project (Project1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  MyForm.cpp
+d:\espconfig\project1\project1\MyForm.h(5): warning C4005: '_WIN32_WINNT': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.16299.0\shared\sdkddkver.h(215): note: see previous definition of '_WIN32_WINNT'
+  .NETFramework,Version=v4.0.AssemblyAttributes.cpp
+  Project1.vcxproj -> D:\ESPConfig\Project1\Release\ESP Config.exe

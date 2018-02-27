@@ -28,7 +28,7 @@ char serveradres [100];
 char ssid[32] = "";     
 char password[32] = "";
 
-/*-------- Definition ----------*/
+/*-------- Defenition ----------*/
 
 extern "C" {
     #include "user_interface.h"
@@ -73,9 +73,9 @@ time_t prevDisplay = 0;
 
 LedControl lc = LedControl(0,2,15,3);
 
-/*-------- Set up thingspaek ----------*/
+/*-------- Set up thingspeak ----------*/
 
-unsigned long myChannelNumber = YourNumber;
+unsigned long myChannelNumber = 123;
 const char * myWriteAPIKey = "YourAPIKey";
 int status = WL_IDLE_STATUS;
 WiFiClient  client;
@@ -172,7 +172,7 @@ void setup() {
   ThingSpeak.writeFields(myChannelNumber, myWriteAPIKey);
 }
 
-/*-------- Nuber Disasembler ----------*/
+/*-------- Nuber Disassembler ----------*/
 
 int numbdis(unsigned long input=0, int y = 0){
   int  x = 0;
@@ -229,7 +229,7 @@ unsigned long floatmulplier(float input = 0){
   }    
 }
 
-/*-------- Maesurments ----------*/
+/*-------- Measurements ----------*/
 
 void masurement(){
   if(millis() - last_millis >= 2500){
@@ -245,7 +245,7 @@ void masurement(){
   } 
 }
 
-/*-------- Write data ti dislays ----------*/
+/*-------- Write data to dislays ----------*/
 
 void writer(){
   
@@ -333,7 +333,7 @@ void writer(){
   
 }  
 
-/*-------- Syncronization ----------*/
+/*-------- Synchronization ----------*/
 void online(){
   if(millis() - s_last_millis >= 30000){
     t = rtc.getTime();
@@ -357,7 +357,7 @@ void online(){
     lc.setDigit(2,6,t.date,true); 
     lc.setDigit(2,7,0,false);   
   }
-  /*-------- Syncronize the values ----------*/
+  /*-------- Synchronize the values ----------*/
   ThingSpeak.setField(1,temp);    
   ThingSpeak.setField(2,h); 
   ThingSpeak.setField(3,p);
@@ -582,7 +582,7 @@ void readEEPROM(){
   Serial.println();
 }
 
-/*-------- Syncronize the clock ----------*/
+/*-------- Synchronize the clock ----------*/
 
 void syncronization(){
   t = rtc.getTime();        
@@ -628,6 +628,4 @@ void loop() {
     ESP.reset();
   }
 }
-
-
 
