@@ -415,6 +415,7 @@ void timestuct(){
       blinker = !blinker;
       writer();
       masurement(); 
+      lc.setChar(2,7,' ',blinker);
     }
   }
 }
